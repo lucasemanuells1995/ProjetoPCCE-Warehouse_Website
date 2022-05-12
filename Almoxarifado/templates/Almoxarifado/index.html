@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Almoxarifado da PCCE 👮‍♂️</title>
+</head>
+<body>
+<div class="index">
+    {% if pergunta_calibre %}
+        <ul>
+            <li><a href="{% url 'Almoxarifado:calibre' pergunta.id %}">{{ pergunta.texto }}</a></li>
+        </ul>
+    {% else %}
+        <p>Almoxarifado indisponível.❌</p>
+    {% endif %}
+</div>
+</body>
+</html>
