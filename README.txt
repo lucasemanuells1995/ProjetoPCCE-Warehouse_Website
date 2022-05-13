@@ -11,4 +11,4 @@ ENTRETANTO, ELE MOSTRA OS DOIS OBJETOS RELACIONADOS AO CALIBRE CORRETO.
 
 - Abrir o CMD ou PowerShell e dar 'pip install django'
 - Executar o comando 'python manage.py runserver'
-- Abrir o link '127.0.0.1:8000/almoxarifado/' no navegador (com o servidor local ligado).
+- Abrir o link '127.0.0.1:8000/almoxarifado/' no navegador (com o servidor local ligado)
