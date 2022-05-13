@@ -63,9 +63,8 @@ def arma(request, pergunta_id):
 def municao(request, pergunta_id):
     global pergunta_selecionada1
     if get_object_or_404(Pergunta, pk=pergunta_id): #Verifica se foi selecionado munição
-
-        pergunta_calibre = Pergunta.objects.filter(texto='Arma')
-        desc = Descricao.objects.filter(id=pergunta_selecionada1)
-        return render(request, 'Almoxarifado/municao.html', {'pergunta_calibre': pergunta_calibre, 'desc': desc})
+            pergunta_calibre = Pergunta.objects.filter(texto='Arma')
+            desc = Descricao.objects.filter(id=pergunta_selecionada1)
+            return render(request, 'Almoxarifado/municao.html', {'pergunta_calibre': pergunta_calibre, 'desc': desc})
     else:               #Caso selecione, salva o id da alternativa, e indica o caminho para a segunda pergunta
-        return render(request, 'Almoxarifado/municao.html', {'error_message': "Você escolheu Arma",})
+        return render(request, 'Almoxarifado/municao.html', {'error_message': "Você escolheu Munição.",})

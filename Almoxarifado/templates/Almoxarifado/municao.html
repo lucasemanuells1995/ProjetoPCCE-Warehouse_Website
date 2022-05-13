@@ -4,20 +4,21 @@
     <title>Almoxarifado da PCCE 👮‍♂️</title>
 </head>
 <body>
+    <center>
+
     {% if pergunta_calibre %}
-        <p>É UMA MUNIÇÃO:</p>
+            <p>É UMA MUNIÇÃO:</p>
 
-        {% for descricao in desc %}
-            <p>{{ descricao.texto_desc }}</p>
-        {% endfor %}
-
+            {% for descricao in desc %}
+                <p>{{ descricao.texto_desc | safe }}</p>
+            {% endfor %}
+    </center>
         <ul>
             {% for pergunta in pergunta_calibre %}
                 <li><a href="{% url 'almoxarifado:arma' pergunta.id %}">{{ pergunta.texto }}</a></li>
             {% endfor %}
+            <li><a href="{% url 'almoxarifado:index' %}">Começar de novo</a></li>
         </ul>
-
-        <a href="{% url 'almoxarifado:index' %}">Começar de novo</a>
 
     {% else %}
         <p>Almoxarifado indisponível.❌</p>
