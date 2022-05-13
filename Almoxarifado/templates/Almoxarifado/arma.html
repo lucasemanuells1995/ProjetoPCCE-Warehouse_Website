@@ -1,32 +1,27 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Almoxarifado da PCCE 👮‍♂️</title>
 </head>
 <body>
     {% if pergunta_calibre %}
-        <h1>{{pergunta.texto}}</h1>
-        <h2>ARMA:</h2>
+        <p>É UMA ARMA:</p>
 
-        {% if p2 = 5 %}
-            <ul>
-                {% for descricao in pergunta.descricao_set.get(id=p1) %}
-                <li>{{descricao.texto_desc}}</li>
-                {% endfor %}
+        {% for descricao in desc %}
+            <p>{{ descricao.texto_desc }}</p>
+        {% endfor %}
 
-            </ul>
-        {% else %}
-            <p>Você escolheu a opção 'Munição". Prossiga para a próxima página.</p>
-        {% endif %}
+        <ul>
+            {% for pergunta in pergunta_calibre %}
+                <li><a href="{% url 'almoxarifado:municao' pergunta.id %}">{{ pergunta.texto }}</a></li>
+            {% endfor %}
+        </ul>
 
-        <a href="{% url 'Almoxarifado:municao' %}">Prosseguir</a>
-        <a href="{% url 'Almoxarifado:index' %}">Começar de novo</a>
+        <a href="{% url 'almoxarifado:index' %}">Começar de novo</a>
+
     {% else %}
         <p>Almoxarifado indisponível.❌</p>
     {% endif %}
-    
+
 </body>
 </html>

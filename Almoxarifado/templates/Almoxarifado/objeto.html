@@ -1,27 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Almoxarifado da PCCE 👮‍♂️</title>
 </head>
 <body>
-    {% if pergunta_calibre %}
-        <h1>{{pergunta.texto}}</h1>
-        <h2>OBJETO:</h2>
-
-        <ul>
+    <form action="{% url 'almoxarifado:objeto' pergunta.id %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h1>{{pergunta.texto}}</h1>
+                <h2>OBJETO:</h2></legend>
+            {% if error_message %}
+                <p><strong>{{ error_message }}</strong></p>
+            {% endif %}
             {% for alternativa in pergunta.alternativa_set.all %}
-            <li>{{alternativa.texto_perguntas}}</li>
+                <input type="radio" name="alternativa" id="alternativa{{ forloop.counter }}" value="{{ alternativa.id }}">
+                <label for="alternativa{{ forloop.counter }}">{{ alternativa.texto_perguntas }}</label><br>
             {% endfor %}
-
-        </ul>
-        <a href="{% url 'Almoxarifado:arma' %}">Prosseguir</a>
-        <a href="{% url 'Almoxarifado:index' %}">Começar de novo</a>
-    {% else %}
-        <p>Almoxarifado indisponível.❌</p>
-    {% endif %}
+        </fieldset>
+        <input type="submit" value="Prosseguir">
+        </form>
+    <a href="{% url 'almoxarifado:index' %}">Começar de novo</a>
     
 </body>
 </html>

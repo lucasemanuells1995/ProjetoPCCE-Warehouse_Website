@@ -7,7 +7,7 @@
     {% if pergunta_calibre %}
         <ul>
         {% for pergunta in pergunta_calibre %}    
-            <li><a href="{% url 'almoxarifado:calibre' pergunta.id %}">{{ pergunta.texto }}</a></li>
+            <li><a href="{% url 'almoxarifado:objeto' pergunta.id %}">{{ pergunta.texto }}</a></li>
         {% endfor %}
         </ul>
     {% else %}

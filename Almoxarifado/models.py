@@ -1,3 +1,4 @@
+from pyexpat import model
 from tkinter import CASCADE
 from django.db import models
 
@@ -19,6 +20,7 @@ class Alternativa(models.Model):
     #linkadas também serão excluídas.
 class Descricao(models.Model):
     pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE)
+    calibre = models.ForeignKey(Alternativa, default=1, on_delete=models.CASCADE)
     texto_desc = models.TextField(max_length=10000) #Descrição de arma ou munição
     def __str__(self):
         return self.texto_desc
@@ -27,6 +29,7 @@ class Descricao(models.Model):
     #linkadas também serão excluídas.
 class Descricao2(models.Model):
     pergunta = models.ForeignKey(Pergunta, on_delete=models.CASCADE)
+    calibre = models.ForeignKey(Alternativa, default=1, on_delete=models.CASCADE)
     texto_mun = models.TextField(max_length=10000) #Descrição de arma ou munição
     def __str__(self):
         return self.texto_mun
